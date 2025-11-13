@@ -1,6 +1,6 @@
 import { MapPin, Globe2 } from "lucide-react";
-import { Card } from "./components/ui/card";
-import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
+import { Card } from "@/components/ui/card";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const countries = [
   { name: "Canada", code: "CA" },
@@ -27,7 +27,7 @@ export function GeographicReach() {
             Where We Export
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-body mb-8" data-testid="text-reach-intro">
-            Our logistics network is structured to meet the import standards of multiple global regions.
+            Our logistics network is structured to meet the import standards of multiple global regions. 
             We currently ship to:
           </p>
         </div>
@@ -60,7 +60,7 @@ export function GeographicReach() {
             </div>
             <div>
               <p className="text-base md:text-lg text-foreground leading-relaxed font-body" data-testid="text-reach-description">
-                Every region has a dedicated supply route, tailored packaging standards, and compliance
+                Every region has a dedicated supply route, tailored packaging standards, and compliance 
                 documentation — ensuring smooth customs clearance and consistent delivery.
               </p>
             </div>

@@ -1,6 +1,6 @@
 import { Globe, Shield, FileCheck } from "lucide-react";
-import { Card } from "./components/ui/card";
-import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
+import { Card } from "@/components/ui/card";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const highlights = [
   {
@@ -35,9 +35,9 @@ export function About() {
             Who We Are
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-body" data-testid="text-about-description">
-            Unity Commerce is a registered Indian export house dedicated to transparent, compliant, and
-            quality-driven international trade. We connect verified Indian producers with global buyers seeking
-            reliable access to Ayurvedic herbs, botanical extracts, and natural raw materials — ensuring every
+            Unity Commerce is a registered Indian export house dedicated to transparent, compliant, and 
+            quality-driven international trade. We connect verified Indian producers with global buyers seeking 
+            reliable access to Ayurvedic herbs, botanical extracts, and natural raw materials — ensuring every 
             shipment meets international export and certification standards.
           </p>
         </div>

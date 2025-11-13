@@ -1,6 +1,6 @@
 import { Award, ShieldCheck, FileText, CheckCircle } from "lucide-react";
-import { Card } from "./components/ui/card";
-import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
+import { Card } from "@/components/ui/card";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const certifications = [
   {
@@ -40,8 +40,8 @@ export function Certifications() {
             Compliance That Builds Confidence
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-body" data-testid="text-certifications-description">
-            Every export operation under Unity Commerce follows certified trade protocols. We are registered
-            and compliant with all major Indian export authorities, ensuring every buyer receives authentic,
+            Every export operation under Unity Commerce follows certified trade protocols. We are registered 
+            and compliant with all major Indian export authorities, ensuring every buyer receives authentic, 
             legally verified products.
           </p>
         </div>

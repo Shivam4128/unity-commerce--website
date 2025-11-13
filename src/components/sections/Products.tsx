@@ -1,7 +1,7 @@
 import { Sprout, Wheat, Droplets, Flower2 } from "lucide-react";
-import { Card } from "./components/ui/card";
-import { Button } from "./components/ui/button";
-import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const products = [
   {
@@ -45,7 +45,7 @@ export function Products() {
             Our Core Export Categories
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-body" data-testid="text-products-description">
-            We export a curated selection of herbal and natural products, each processed and packaged to
+            We export a curated selection of herbal and natural products, each processed and packaged to 
             international specifications.
           </p>
         </div>

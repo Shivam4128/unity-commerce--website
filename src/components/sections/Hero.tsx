@@ -1,5 +1,5 @@
-import { Button } from "./components/ui/button";
-import heroImage from "@assets/generated_images/Ayurvedic_herbs_hero_image_e08becb2.png";
+import { Button } from "@/components/ui/button";
+// import heroImage from "@assets/generated_images/Ayurvedic_herbs_hero_image_e08becb2.png";
 
 export function Hero() {
   const scrollToSection = (id: string) => {
@@ -13,7 +13,7 @@ export function Hero() {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        style={{ backgroundImage: `url(Ayurvedic_herbs_hero_image_e08becb2.png)` }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/50" />
       </div>

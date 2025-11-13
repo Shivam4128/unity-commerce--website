@@ -1,6 +1,6 @@
 import { Package, BadgeCheck, Target, Ship, Heart } from "lucide-react";
-import { Card } from "./components/ui/card";
-import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
+import { Card } from "@/components/ui/card";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const reasons = [
   {

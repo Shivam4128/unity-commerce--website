@@ -1,6 +1,6 @@
 import { Mail, Clock, MessageSquare } from "lucide-react";
-import { Card } from "./components/ui/card";
-import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
+import { Card } from "@/components/ui/card";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 export function Contact() {
   const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.2 });
