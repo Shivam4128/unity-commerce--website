@@ -93,7 +93,7 @@ export function Contact() {
                       </ol>
                     </div>
                   </div> */}
-                  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfA7NUWMy6-eaZXjz6u-fD7kUGQDyNrWCiLvEzTPsauNsL5hQ/viewform?embedded=true" width="700" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfA7NUWMy6-eaZXjz6u-fD7kUGQDyNrWCiLvEzTPsauNsL5hQ/viewform?embedded=true" width="700" height="700">Loading…</iframe>
                 </div>
               </div>
             </div>
