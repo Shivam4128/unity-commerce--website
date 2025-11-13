@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-// import heroImage from "@assets/generated_images/Ayurvedic_herbs_hero_image_e08becb2.png";
 
 export function Hero() {
   const scrollToSection = (id: string) => {

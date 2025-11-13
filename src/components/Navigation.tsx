@@ -101,7 +101,7 @@ export function Navigation() {
               <Button
                 key={link.name}
                 variant="ghost"
-                className="w-full justify-start"
+                className="w-full justify-start text-black"
                 onClick={() => scrollToSection(link.href)}
                 data-testid={`link-mobile-${link.name.toLowerCase().replace(" ", "-")}`}
               >
@@ -119,7 +119,7 @@ export function Navigation() {
               </Button>
               <Button
                 variant="outline"
-                className="w-full"
+                className="w-full text-black"
                 onClick={() => scrollToSection("#contact")}
                 data-testid="button-mobile-partner"
               >
