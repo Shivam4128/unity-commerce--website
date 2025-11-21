@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X, Leaf } from "lucide-react";
+import {Button} from "@/components/ui/button";
+import {Menu, X} from "lucide-react";
+import {useEffect, useState} from "react";
 
 const navLinks = [
   { name: "About", href: "#about" },

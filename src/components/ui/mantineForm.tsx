@@ -12,7 +12,7 @@ import {useState} from "react";
 export default function EnquiryForm() {
     const [loading, setLoading] = useState(false);
     const [isSubmitted,setIsSubmitted] = useState(false);
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e:any) => {
         e.preventDefault();
         setLoading(true);
 
@@ -102,7 +102,7 @@ export default function EnquiryForm() {
                     mb="md"
                 />
                 <Checkbox.Group
-                    name="entry.697430584_sentinel"
+                    // name="entry.697430584_sentinel"
                     label="Product of Interest"
                     description="Select all applicable products"
                     withAsterisk
