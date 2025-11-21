@@ -39,17 +39,21 @@ export function Navigation() {
           : "bg-transparent text-white"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex items-center justify-between h-20">
           <button
             onClick={() => scrollToSection("#hero")}
             className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-md px-2 py-1 -ml-2"
             data-testid="link-logo"
           >
-            <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
+            {
+              isScrolled ? <img src="/logo.webp" alt = "logo" className="h-[70px] aspect-auto"/>  :<img src="/logo_white.png" alt = "logo" className="h-[70px] aspect-auto"/>
+            }
+            {/* <img src="/logo_white.png" alt = "logo" className="h-[70px] aspect-auto"/> */}
+            {/* <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
               <Leaf className="w-6 h-6 text-primary-foreground" />
             </div>
-            <span className={`${"text-xl font-bold text-foreground" + isScrolled ? "": "!text-white"}`}>Unity Commerce</span>
+            <span className={`${"text-xl font-bold text-foreground" + isScrolled ? "": "!text-white"}`}>Unity Commerce</span> */}
           </button>
 
           <nav className="hidden md:flex items-center gap-1">

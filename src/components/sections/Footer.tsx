@@ -1,5 +1,3 @@
-import { Leaf } from "lucide-react";
-
 const quickLinks = [
   { name: "About", href: "#about" },
   { name: "Products", href: "#products" },
@@ -21,14 +19,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
+              <img src="/logo.webp" alt = "logo" className="h-[70px] aspect-auto"/>
+              {/* <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
                 <Leaf className="w-6 h-6 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold text-foreground">Unity Commerce</span>
+              <span className="text-xl font-bold text-foreground">Unity Commerce</span> */}
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed font-body" data-testid="text-footer-description">
-              Unity Commerce is a certified Ayurvedic and natural products exporter from India, operating 
-              under APEDA and FSSAI compliance. Our mission is to deliver transparency, trust, and trade 
+              Unity Commerce is a certified Ayurvedic and natural products exporter from India, operating
+              under APEDA and FSSAI compliance. Our mission is to deliver transparency, trust, and trade
               excellence across borders.
             </p>
           </div>
@@ -54,9 +53,12 @@ export function Footer() {
             <h3 className="text-lg font-semibold text-foreground mb-4">Registered Office</h3>
             <div className="text-sm text-muted-foreground space-y-2 font-body">
               <p className="font-semibold text-foreground">Unity Commerce</p>
-              <p className="italic">[Add address line here]</p>
+              <p className="italic">Shree Ram Bazar, Shimla Bahadur, Rudrapur (U.S. NAGAR), PIN- 263153</p>
               <p className="mt-4">
-                <span className="font-semibold text-foreground">IEC License No:</span> [Add number]
+                <span className="font-semibold text-foreground">Email :</span> unitycommerceindia@gmail.com
+              </p>
+              <p className="mt-4">
+                <span className="font-semibold text-foreground">Phone :</span> 7424904388
               </p>
             </div>
           </div>
