@@ -64,9 +64,6 @@ export function WhyPartner() {
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
-                        {index + 1}
-                      </div>
                       <h3 className="text-xl md:text-2xl font-semibold text-foreground" data-testid={`text-reason-title-${index}`}>
                         {reason.title}
                       </h3>

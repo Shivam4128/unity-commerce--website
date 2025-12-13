@@ -43,7 +43,7 @@ export function Hero() {
           >
             Explore Our Products
           </Button>
-          <Button
+          {/* <Button
             size="lg"
             variant="outline"
             className="text-lg px-8 py-6 h-auto min-h-0 bg-white/10 backdrop-blur-md border-white/30 text-white hover:bg-white/20"
@@ -51,7 +51,7 @@ export function Hero() {
             data-testid="button-hero-partner"
           >
             Partner With Us
-          </Button>
+          </Button> */}
         </div>
       </div>
 

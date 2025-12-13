@@ -85,7 +85,7 @@ export function Navigation() {
                             <Button
                                 key={link.name}
                                 variant="ghost"
-                                onClick={() => scrollToSection(link.href)}
+                                onClick={() => link.href === "#contact" ?  window.location.href = '/enquiry' :scrollToSection(link.href)}
                                 data-testid={`link-nav-${link.name
                                     .toLowerCase()
                                     .replace(" ", "-")}`}
@@ -103,13 +103,13 @@ export function Navigation() {
                         >
                             Explore Products
                         </Button>
-                        <Button
+                        {/* <Button
                             variant="outline"
                             onClick={() => scrollToSection("#contact")}
                             data-testid="button-partner"
                         >
                             Partner With Us
-                        </Button>
+                        </Button> */}
                     </div>
 
                     <Button
@@ -153,14 +153,14 @@ export function Navigation() {
                             >
                                 Explore Products
                             </Button>
-                            <Button
+                            {/* <Button
                                 variant="outline"
                                 className="w-full text-black"
                                 onClick={() => scrollToSection("#contact")}
                                 data-testid="button-mobile-partner"
                             >
                                 Partner With Us
-                            </Button>
+                            </Button> */}
                         </div>
                     </nav>
                 </div>
