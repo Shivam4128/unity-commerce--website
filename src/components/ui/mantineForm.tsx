@@ -5,13 +5,14 @@ import {
     Group,
     Radio,
     TextInput,
-    Title
+    Title,
 } from "@mantine/core";
 import { useState } from "react";
 
 export default function EnquiryForm() {
     const [loading, setLoading] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [products, setProducts] = useState<Array<string>>([]);
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         setLoading(true);
@@ -25,18 +26,20 @@ export default function EnquiryForm() {
             phone: formData.get("entry.1007918197"),
             company: formData.get("entry.1010406001"),
             country: formData.get("entry.402125416"),
-            products: "FYS",
+            products: products.join(", "),
             form: formData.get("entry.566987055_sentinel"),
         };
 
         try {
-            const res = await fetch("https://script.google.com/macros/s/AKfycbyn3KcPH6CtlLjvoM8W6DrxQCeNFOf4s87v26zpVa7dnbIZ48FVGpAqhJ_1Ovj0A7Ex/exec", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                mode: "no-cors",
-                body: JSON.stringify(data),
-            });
-            console.log("hello");
+            const res = await fetch(
+                "https://script.google.com/macros/s/AKfycbyn3KcPH6CtlLjvoM8W6DrxQCeNFOf4s87v26zpVa7dnbIZ48FVGpAqhJ_1Ovj0A7Ex/exec",
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    mode: "no-cors",
+                    body: JSON.stringify(data),
+                }
+            );
             console.log(res);
             console.log(await res.text());
             setIsSubmitted(true);
@@ -55,7 +58,8 @@ export default function EnquiryForm() {
                         Thank You!
                     </Title>
                     <p className="text-lg text-gray-600 mb-6">
-                        Your enquiry has been submitted successfully. We'll respond within 24 hours with comprehensive information.
+                        Your enquiry has been submitted successfully. We'll
+                        respond within 24 hours with comprehensive information.
                     </p>
                     <Button
                         onClick={() => setIsSubmitted(false)}
@@ -117,6 +121,10 @@ export default function EnquiryForm() {
                             mb="md"
                         />
                         <Checkbox.Group
+                            onChange={(value) => {
+                                setProducts(value);
+                            }}
+                            value={products}
                             // name="entry.697430584_sentinel"
                             label="Product of Interest"
                             description="Select all applicable products"
@@ -169,7 +177,10 @@ export default function EnquiryForm() {
                         </Checkbox.Group>
                         {/* Form */}
                         <Box mb="md">
-                            <Radio.Group name="entry.566987055_sentinel" label="Form" >
+                            <Radio.Group
+                                name="entry.566987055_sentinel"
+                                label="Form"
+                            >
                                 <div className="grid grid-flow-col gap-2 justify-start">
                                     <Radio value="Raw" label="Raw" />
                                     <Radio
@@ -188,5 +199,3 @@ export default function EnquiryForm() {
         </div>
     );
 }
-
-// https://script.google.com/macros/s/AKfycbxReJpy--fh7GjsfY5v95gjFlkjMarcRIvLpCmTNW-kBLRLOAFRMlsz59AydkxVvpsJ/exec

@@ -58,7 +58,7 @@ export function Footer() {
                 <span className="font-semibold text-foreground">Email :</span> unitycommerceindia@gmail.com
               </p>
               <p className="mt-4">
-                <span className="font-semibold text-foreground">Phone :</span> 7424904388
+                <span className="font-semibold text-foreground">Phone :</span> +91 7424904388
               </p>
             </div>
           </div>
