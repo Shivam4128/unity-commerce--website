@@ -33,13 +33,12 @@ export function Navigation() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                window.location.pathname === "/"
-                    ? isScrolled
-                        ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
-                        : "bg-transparent text-white"
-                    : "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
-            }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${window.location.pathname === "/"
+                ? isScrolled
+                    ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
+                    : "bg-transparent text-white"
+                : "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
+                }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
                 <div className="flex items-center justify-between h-20">
@@ -57,20 +56,20 @@ export function Navigation() {
                                 <img
                                     src="/logo.webp"
                                     alt="logo"
-                                    className="h-[70px] aspect-auto"
+                                    className="h-[55px] sm:h-[70px] aspect-auto"
                                 />
                             ) : (
                                 <img
                                     src="/logo_white.png"
                                     alt="logo"
-                                    className="h-[70px] aspect-auto"
+                                    className="h-[55px] sm:h-[70px] aspect-auto"
                                 />
                             )
                         ) : (
                             <img
                                 src="/logo.webp"
                                 alt="logo"
-                                className="h-[70px] aspect-auto"
+                                className="h-[55px] aspect-auto"
                             />
                         )}
                         {/* <img src="/logo_white.png" alt = "logo" className="h-[70px] aspect-auto"/> */}
@@ -85,7 +84,7 @@ export function Navigation() {
                             <Button
                                 key={link.name}
                                 variant="ghost"
-                                onClick={() => link.href === "#contact" ?  window.location.href = '/enquiry' :scrollToSection(link.href)}
+                                onClick={() => link.href === "#contact" ? window.location.href = '/enquiry' : scrollToSection(link.href)}
                                 data-testid={`link-nav-${link.name
                                     .toLowerCase()
                                     .replace(" ", "-")}`}

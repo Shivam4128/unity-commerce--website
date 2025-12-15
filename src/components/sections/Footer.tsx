@@ -19,7 +19,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src="/logo.webp" alt = "logo" className="h-[70px] aspect-auto"/>
+              <img src="/logo.webp" alt="logo" className="h-[50px] aspect-auto" />
               {/* <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
                 <Leaf className="w-6 h-6 text-primary-foreground" />
               </div>
