@@ -12,7 +12,6 @@ import {
     RefreshCw,
     TrendingUp,
     ArrowRight,
-    Image as ImageIcon,
 } from "lucide-react";
 
 const countries = [
@@ -85,53 +84,41 @@ export function ReachContent() {
                     </p>
                 </div>
 
-                {/* Image Placeholder Section */}
+                {/* Image Section */}
                 <div
                     className={`mb-16 transition-all duration-1000 delay-200 ${headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                         }`}
                 >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* Image Placeholder 1 - World Map */}
+                        {/* World Export Map */}
                         <Card className="overflow-hidden">
-                            <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-background p-8 flex items-center justify-center min-h-[280px]">
-                                <div className="text-center">
-                                    <div className="w-20 h-20 mx-auto mb-4 rounded-xl bg-primary/20 flex items-center justify-center">
-                                        <Globe className="w-10 h-10 text-primary" />
-                                    </div>
-                                    <p className="text-sm font-medium text-muted-foreground mb-2">
-                                        World Export Map
-                                    </p>
-                                    <p className="text-xs text-muted-foreground/70">
-                                        Add your global reach visualization here
-                                    </p>
-                                </div>
-                                <div className="absolute bottom-3 right-3">
-                                    <div className="flex items-center gap-1 px-2 py-1 bg-background/80 rounded text-xs text-muted-foreground">
-                                        <ImageIcon className="w-3 h-3" />
-                                        <span>Image placeholder</span>
+                            <div className="relative">
+                                <img
+                                    src="/worldExportMap.jpg"
+                                    alt="World Export Map"
+                                    className="w-full h-[280px] object-cover"
+                                />
+                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                    <div className="flex items-center gap-2 text-white">
+                                        <Globe className="w-5 h-5" />
+                                        <span className="font-medium">World Export Map</span>
                                     </div>
                                 </div>
                             </div>
                         </Card>
 
-                        {/* Image Placeholder 2 - Logistics */}
+                        {/* Logistics Network */}
                         <Card className="overflow-hidden">
-                            <div className="relative bg-gradient-to-br from-blue-500/10 via-blue-500/5 to-background p-8 flex items-center justify-center min-h-[280px]">
-                                <div className="text-center">
-                                    <div className="w-20 h-20 mx-auto mb-4 rounded-xl bg-blue-500/20 flex items-center justify-center">
-                                        <Ship className="w-10 h-10 text-blue-600" />
-                                    </div>
-                                    <p className="text-sm font-medium text-muted-foreground mb-2">
-                                        Logistics Network
-                                    </p>
-                                    <p className="text-xs text-muted-foreground/70">
-                                        Add your shipping/logistics image here
-                                    </p>
-                                </div>
-                                <div className="absolute bottom-3 right-3">
-                                    <div className="flex items-center gap-1 px-2 py-1 bg-background/80 rounded text-xs text-muted-foreground">
-                                        <ImageIcon className="w-3 h-3" />
-                                        <span>Image placeholder</span>
+                            <div className="relative">
+                                <img
+                                    src="/logisticNetwork.jpg"
+                                    alt="Logistics Network"
+                                    className="w-full h-[280px] object-cover"
+                                />
+                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                    <div className="flex items-center gap-2 text-white">
+                                        <Ship className="w-5 h-5" />
+                                        <span className="font-medium">Logistics Network</span>
                                     </div>
                                 </div>
                             </div>
