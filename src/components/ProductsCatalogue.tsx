@@ -33,16 +33,21 @@ const products: Product[] = [
         name: "Ashwagandha Root",
         botanicalName: "Withania somnifera (L.) Dunal",
         description:
-            "Whole or cut dried roots used as raw material for powders, extracts, capsules, and traditional preparations. Roots are cleaned, shade-dried, and size-graded to maintain uniformity.",
+            "Whole or cut dried roots used as raw material for powders, extracts, capsules, and traditional preparations. Roots are cleaned, shade-dried, and size-graded to maintain uniformity. Export batches follow moisture-control requirements and botanical identity checks.",
         typicalUses: "Extraction, powder milling, herbal formulations, nutraceutical blends.",
         specifications: [
             { attribute: "Packaging Size", details: "25 kg bulk HDPE / PP woven bags (customisable 1–50 kg)" },
             { attribute: "Part Used", details: "Mature dried roots" },
             { attribute: "Form", details: "Whole roots / cut roots" },
             { attribute: "Processing Type", details: "Shade-dried, cleaned, size-graded" },
+            { attribute: "Packaging Type", details: "Food-grade PP / HDPE bag with inner liner" },
             { attribute: "Color", details: "Light beige to pale brown" },
             { attribute: "Is It Organic", details: "Available as conventional or certified organic" },
+            { attribute: "Is It Dried", details: "Yes – moisture typically <10%" },
+            { attribute: "Product Type", details: "Ayurvedic medicinal herb (raw)" },
+            { attribute: "Grade Standard", details: "Herbal / medicine grade suitable for extraction" },
             { attribute: "Shelf Life", details: "2–3 years in cool, dry storage" },
+            { attribute: "Usage/Application", details: "Powders, capsules, tablets, tinctures, teas, tonics, nutraceutical blends" },
             { attribute: "Country of Origin", details: "India" },
         ],
     },
@@ -51,15 +56,21 @@ const products: Product[] = [
         name: "Ashwagandha Powder",
         botanicalName: "Withania somnifera (L.) Dunal",
         description:
-            "Finely milled powder (60–100 mesh) produced from dried roots. Processed under controlled drying conditions.",
+            "Finely milled powder (60–100 mesh) produced from dried roots. Processed under controlled drying conditions to maintain colour, aroma, and consistency. Both conventional and organic grades are available.",
         typicalUses: "Capsules, tablets, instant mixes, wellness blends, functional foods.",
         specifications: [
             { attribute: "Packaging Size", details: "1 kg food-grade pouches, 25 kg bulk bags" },
             { attribute: "Part Used", details: "Roots (root-only, leaf-free)" },
             { attribute: "Form", details: "Fine powder (60–100 mesh)" },
+            { attribute: "Processing Type", details: "Shade-dried roots, mechanically milled, sieved" },
+            { attribute: "Packaging Type", details: "Moisture-barrier pouch / HDPE drum / bulk bag" },
             { attribute: "Color", details: "Light cream to yellowish-brown" },
             { attribute: "Is It Organic", details: "Available" },
+            { attribute: "Is It Dried", details: "Yes" },
+            { attribute: "Product Type", details: "Herbal dietary ingredient / nutraceutical powder" },
+            { attribute: "Grade Standard", details: "Food / supplement grade" },
             { attribute: "Shelf Life", details: "2 years (airtight, away from light)" },
+            { attribute: "Usage/Application", details: "Encapsulation, tablets, instant drinks, blends" },
             { attribute: "Country of Origin", details: "India" },
         ],
     },
@@ -68,14 +79,21 @@ const products: Product[] = [
         name: "Shatavari Powder",
         botanicalName: "Asparagus racemosus Willd.",
         description:
-            "Prepared from dried tuberous roots. Washed, shade-dried, and milled to a stable mesh.",
+            "Prepared from dried tuberous roots. Washed, shade-dried, and milled to a stable mesh suitable for nutraceutical applications.",
         typicalUses: "Granules, capsules, syrups, ghee-based formulations.",
         specifications: [
             { attribute: "Packaging Size", details: "25 kg root slices or powder bags" },
             { attribute: "Part Used", details: "Tuberous roots" },
             { attribute: "Form", details: "Sliced roots or powder" },
+            { attribute: "Processing Type", details: "Washed, peeled (optional), shade-dried, cut / powdered" },
+            { attribute: "Packaging Type", details: "HDPE / jute bags with liner" },
             { attribute: "Color", details: "Cream to pale brown" },
+            { attribute: "Is It Organic", details: "Available" },
+            { attribute: "Is It Dried", details: "Yes" },
+            { attribute: "Product Type", details: "Women's health and general tonic herb" },
+            { attribute: "Grade Standard", details: "Herbal / medicine grade" },
             { attribute: "Shelf Life", details: "2–3 years" },
+            { attribute: "Usage/Application", details: "Powders, granules, capsules, syrups, ghee preparations" },
             { attribute: "Country of Origin", details: "India" },
         ],
     },
@@ -84,30 +102,44 @@ const products: Product[] = [
         name: "Giloy Powder",
         botanicalName: "Tinospora cordifolia (Willd.) Hook. f. & Thomson",
         description:
-            "Obtained from dried stems. Stems are cut, cleaned, shade-dried, and pulverised.",
+            "Obtained from dried stems. Stems are cut, cleaned, shade-dried, and pulverised. Powder maintains a natural brownish-green shade and adheres to export moisture standards.",
         typicalUses: "Powders, tablets, kadha blends, immunity formulations.",
         specifications: [
             { attribute: "Packaging Size", details: "25 kg powder bags" },
             { attribute: "Part Used", details: "Mature stems" },
             { attribute: "Form", details: "Coarse or fine powder" },
+            { attribute: "Processing Type", details: "Cut, shade-dried, pulverised" },
+            { attribute: "Packaging Type", details: "HDPE / paper bag with liner" },
             { attribute: "Color", details: "Brownish-green" },
+            { attribute: "Is It Organic", details: "Available" },
+            { attribute: "Is It Dried", details: "Yes" },
+            { attribute: "Product Type", details: "Ayurvedic immunomodulatory herb" },
+            { attribute: "Grade Standard", details: "Herbal / extract grade" },
             { attribute: "Shelf Life", details: "2 years" },
+            { attribute: "Usage/Application", details: "Powders, tablets, kadha blends" },
             { attribute: "Country of Origin", details: "India" },
         ],
     },
     {
         id: 5,
         name: "Amla Powder",
-        botanicalName: "Phyllanthus emblica L.",
+        botanicalName: "Phyllanthus emblica L. (syn. Emblica officinalis)",
         description:
-            "Prepared from deseeded, dried fruits milled into a stable powder.",
+            "Prepared from deseeded, dried fruits milled into a stable powder. Colour varies based on drying method.",
         typicalUses: "Triphala, hair oils, chyawanprash, functional food mixes.",
         specifications: [
             { attribute: "Packaging Size", details: "25–50 kg whole fruit bags; 25 kg powder bags" },
             { attribute: "Part Used", details: "Dried fruit" },
             { attribute: "Form", details: "Whole, deseeded pieces or powder" },
+            { attribute: "Processing Type", details: "Deseeded, dried, optional low-temp powdering" },
+            { attribute: "Packaging Type", details: "HDPE / jute bags with liner" },
             { attribute: "Color", details: "Yellowish-brown" },
+            { attribute: "Is It Organic", details: "Available" },
+            { attribute: "Is It Dried", details: "Yes" },
+            { attribute: "Product Type", details: "Triphala ingredient / single herb" },
+            { attribute: "Grade Standard", details: "Herbal / medicine grade" },
             { attribute: "Shelf Life", details: "2 years" },
+            { attribute: "Usage/Application", details: "Triphala, vitamin-C blends, hair oils" },
             { attribute: "Country of Origin", details: "India" },
         ],
     },
@@ -116,13 +148,13 @@ const products: Product[] = [
         name: "Triphala Powder",
         composition: "Amla, Haritaki, Bibhitaki",
         description:
-            "A balanced blend of three classical Ayurvedic fruits.",
+            "A balanced blend of three classical Ayurvedic fruits. Each fruit is individually dried and milled before blending to maintain proportional consistency.",
         typicalUses: "Powders, tablets, decoction mixes, traditional formulations.",
     },
     {
         id: 7,
         name: "Tulsi Powder",
-        botanicalName: "Ocimum tenuiflorum",
+        botanicalName: "Ocimum tenuiflorum (syn. Ocimum sanctum)",
         description:
             "Produced from shade-dried leaves and tender stems to retain chlorophyll and aroma.",
         typicalUses: "Tea blends, respiratory formulas, cosmetics, extracts.",
@@ -130,8 +162,15 @@ const products: Product[] = [
             { attribute: "Packaging Size", details: "20–25 kg dried herb; 25 kg powder bags" },
             { attribute: "Part Used", details: "Aerial parts" },
             { attribute: "Form", details: "Cut-sifted herb or powder" },
+            { attribute: "Processing Type", details: "Shade-dried, cut, optional powdering" },
+            { attribute: "Packaging Type", details: "Paper / PP bags with liner" },
             { attribute: "Color", details: "Green to olive green" },
+            { attribute: "Is It Organic", details: "Available" },
+            { attribute: "Is It Dried", details: "Yes" },
+            { attribute: "Product Type", details: "Herbal tea and extract raw material" },
+            { attribute: "Grade Standard", details: "Herbal / tea grade" },
             { attribute: "Shelf Life", details: "1–2 years" },
+            { attribute: "Usage/Application", details: "Teas, stress blends, respiratory formulas" },
             { attribute: "Country of Origin", details: "India" },
         ],
     },
@@ -140,14 +179,21 @@ const products: Product[] = [
         name: "Neem Powder",
         botanicalName: "Azadirachta indica A. Juss.",
         description:
-            "Processed from shade-dried neem leaves. Packed in moisture-secure bags.",
+            "Processed from shade-dried neem leaves. Packed in moisture-secure bags to preserve chlorophyll.",
         typicalUses: "Skin & hair products, soaps, personal care, internal blends.",
         specifications: [
             { attribute: "Packaging Size", details: "25 kg bulk bags; 100 g–1 kg pouches" },
             { attribute: "Part Used", details: "Mature leaves" },
             { attribute: "Form", details: "Fine powder" },
+            { attribute: "Processing Type", details: "Shade-dried, pulverised, sieved" },
+            { attribute: "Packaging Type", details: "HDPE / paper bag with liner" },
             { attribute: "Color", details: "Deep green to olive green" },
+            { attribute: "Is It Organic", details: "Commonly available" },
+            { attribute: "Is It Dried", details: "Yes" },
+            { attribute: "Product Type", details: "Herbal powder" },
+            { attribute: "Grade Standard", details: "Medicine / cosmetic grade" },
             { attribute: "Shelf Life", details: "1–2 years" },
+            { attribute: "Usage/Application", details: "Ayurvedic blends, skin & hair care" },
             { attribute: "Country of Origin", details: "India" },
         ],
     },
@@ -177,6 +223,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             className={`overflow-hidden transition-all duration-700 hover:shadow-xl ${isIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
             style={{ transitionDelay: `${(index % 4) * 100}ms` }}
+            data-testid={`product-card-${product.id}`}
         >
             <div className="p-6 md:p-8">
                 <div className="flex items-start gap-4 mb-4">
@@ -217,30 +264,46 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
                             variant="ghost"
                             className="w-full justify-between text-primary hover:text-primary hover:bg-primary/5"
                             onClick={() => setIsExpanded(!isExpanded)}
+                            data-testid={`expand-specs-${product.id}`}
                         >
                             <span className="font-medium">
                                 {isExpanded ? "Hide Specifications" : "View Specifications"}
                             </span>
-                            {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                            {isExpanded ? (
+                                <ChevronUp className="w-5 h-5" />
+                            ) : (
+                                <ChevronDown className="w-5 h-5" />
+                            )}
                         </Button>
 
                         <div
-                            className={`overflow-hidden transition-all duration-500 ${isExpanded ? "max-h-[600px] opacity-100 mt-4" : "max-h-0 opacity-0"
+                            className={`overflow-hidden transition-all duration-500 ${isExpanded ? "max-h-[800px] opacity-100 mt-4" : "max-h-0 opacity-0"
                                 }`}
                         >
                             <div className="rounded-lg border overflow-hidden">
                                 <Table>
                                     <TableHeader>
                                         <TableRow className="bg-muted/50">
-                                            <TableHead className="font-semibold text-foreground w-1/3">Attribute</TableHead>
-                                            <TableHead className="font-semibold text-foreground">Details</TableHead>
+                                            <TableHead className="font-semibold text-foreground w-1/3">
+                                                Attribute
+                                            </TableHead>
+                                            <TableHead className="font-semibold text-foreground">
+                                                Details
+                                            </TableHead>
                                         </TableRow>
                                     </TableHeader>
                                     <TableBody>
                                         {product.specifications.map((spec, specIndex) => (
-                                            <TableRow key={specIndex} className="hover:bg-muted/30 transition-colors">
-                                                <TableCell className="font-medium text-foreground">{spec.attribute}</TableCell>
-                                                <TableCell className="text-muted-foreground">{spec.details}</TableCell>
+                                            <TableRow
+                                                key={specIndex}
+                                                className="hover:bg-muted/30 transition-colors"
+                                            >
+                                                <TableCell className="font-medium text-foreground">
+                                                    {spec.attribute}
+                                                </TableCell>
+                                                <TableCell className="text-muted-foreground">
+                                                    {spec.details}
+                                                </TableCell>
                                             </TableRow>
                                         ))}
                                     </TableBody>
@@ -255,15 +318,23 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 }
 
 export function ProductsCatalogue() {
-    const { ref: headerRef, isIntersecting: headerVisible } = useIntersectionObserver({ threshold: 0.2 });
-    const { ref: qualityRef, isIntersecting: qualityVisible } = useIntersectionObserver({ threshold: 0.2 });
-    const { ref: packagingRef, isIntersecting: packagingVisible } = useIntersectionObserver({ threshold: 0.2 });
-    const { ref: additionalRef, isIntersecting: additionalVisible } = useIntersectionObserver({ threshold: 0.2 });
+    const { ref: headerRef, isIntersecting: headerVisible } = useIntersectionObserver({
+        threshold: 0.2,
+    });
+    const { ref: qualityRef, isIntersecting: qualityVisible } = useIntersectionObserver({
+        threshold: 0.2,
+    });
+    const { ref: packagingRef, isIntersecting: packagingVisible } = useIntersectionObserver({
+        threshold: 0.2,
+    });
+    const { ref: additionalRef, isIntersecting: additionalVisible } = useIntersectionObserver({
+        threshold: 0.2,
+    });
 
     return (
         <section className="py-16 md:py-24 bg-background">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Header */}
+                {/* Header Section */}
                 <div
                     ref={headerRef}
                     className={`text-center mb-16 transition-all duration-1000 ${headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -271,14 +342,24 @@ export function ProductsCatalogue() {
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                         <Leaf className="w-5 h-5 text-primary" />
-                        <span className="text-sm font-semibold text-primary uppercase tracking-wider">Our Products</span>
+                        <span className="text-sm font-semibold text-primary uppercase tracking-wider">
+                            Our Products
+                        </span>
                     </div>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                         Export-Grade Ayurvedic
                         <span className="block text-primary">Herbs & Botanicals</span>
                     </h1>
                     <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                        Unity Commerce supplies export-grade Ayurvedic herbs and botanical powders processed under documented, hygienic, and moisture-controlled conditions.
+                        Unity Commerce supplies export-grade Ayurvedic herbs and botanical powders
+                        processed under documented, hygienic, and moisture-controlled conditions.
+                        Each product is sourced from registered farms or verified processors in India,
+                        cleaned and graded according to export requirements, and packed in food-grade
+                        material suitable for bulk shipments.
+                    </p>
+                    <p className="text-base text-muted-foreground/80 mt-4 italic">
+                        All specifications remain consistent across repeated orders unless a buyer
+                        requests a customised grade.
                     </p>
                 </div>
 
@@ -289,7 +370,7 @@ export function ProductsCatalogue() {
                     ))}
                 </div>
 
-                {/* Additional Products */}
+                {/* Additional Products Section */}
                 <div
                     ref={additionalRef}
                     className={`mb-20 transition-all duration-1000 ${additionalVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -301,11 +382,18 @@ export function ProductsCatalogue() {
                                 <Package className="w-6 h-6 text-primary" />
                             </div>
                             <div>
-                                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Additional Products</h2>
+                                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                                    Additional Products
+                                </h2>
                                 <p className="text-muted-foreground leading-relaxed">
-                                    Unity Commerce can supply multiple other herbal powders and plant-based raw materials on request.
+                                    Unity Commerce can supply multiple other herbal powders and plant-based
+                                    raw materials on request. Availability depends on crop cycles,
+                                    processing schedules, and export feasibility for the destination country.
                                 </p>
-                                <Button className="mt-6" onClick={() => (window.location.href = "/enquiry")}>
+                                <Button
+                                    className="mt-6"
+                                    onClick={() => (window.location.href = "/enquiry")}
+                                >
                                     Request Custom Products
                                 </Button>
                             </div>
@@ -313,7 +401,7 @@ export function ProductsCatalogue() {
                     </Card>
                 </div>
 
-                {/* Quality Standards */}
+                {/* Quality & Processing Standards */}
                 <div
                     ref={qualityRef}
                     className={`mb-16 transition-all duration-1000 ${qualityVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -324,11 +412,16 @@ export function ProductsCatalogue() {
                             <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
                                 <CheckCircle2 className="w-6 h-6 text-primary" />
                             </div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground">Quality & Processing Standards</h2>
+                            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                                Quality & Processing Standards
+                            </h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {qualityStandards.map((standard, index) => (
-                                <div key={index} className="flex items-center gap-3 p-4 bg-muted/30 rounded-lg">
+                                <div
+                                    key={index}
+                                    className="flex items-center gap-3 p-4 bg-muted/30 rounded-lg"
+                                >
                                     <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
                                     <span className="text-foreground">{standard}</span>
                                 </div>
@@ -349,13 +442,20 @@ export function ProductsCatalogue() {
                                 <Box className="w-6 h-6 text-primary" />
                             </div>
                             <div>
-                                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">Export Packaging</h2>
-                                <p className="text-muted-foreground">Packaging is selected based on:</p>
+                                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                                    Export Packaging
+                                </h2>
+                                <p className="text-muted-foreground">
+                                    Packaging is selected based on:
+                                </p>
                             </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             {packagingFactors.map((factor, index) => (
-                                <div key={index} className="flex items-center gap-3 p-4 bg-muted/30 rounded-lg">
+                                <div
+                                    key={index}
+                                    className="flex items-center gap-3 p-4 bg-muted/30 rounded-lg"
+                                >
                                     <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
                                     <span className="text-foreground">{factor}</span>
                                 </div>
@@ -363,8 +463,10 @@ export function ProductsCatalogue() {
                         </div>
                         <div className="p-4 bg-primary/10 rounded-lg">
                             <p className="text-foreground font-medium">
-                                Standard pack sizes range from <span className="text-primary font-bold">1 kg retail packs</span> to{" "}
-                                <span className="text-primary font-bold">25–50 kg bulk bags</span>, as per buyer requirements.
+                                Standard pack sizes range from{" "}
+                                <span className="text-primary font-bold">1 kg retail packs</span> to{" "}
+                                <span className="text-primary font-bold">25–50 kg bulk bags</span>,
+                                as per buyer requirements.
                             </p>
                         </div>
                     </Card>
