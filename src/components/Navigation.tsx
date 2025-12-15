@@ -3,10 +3,10 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navLinks = [
-    { name: "About", href: "#about" },
+    { name: "About", href: "/about-us", isRoute: true },
     { name: "Products", href: "#products" },
-    { name: "Certifications", href: "#certifications" },
-    { name: "Reach", href: "#reach" },
+    { name: "Certifications", href: "/certificates", isRoute: true },
+    { name: "Reach", href: "/reach", isRoute: true },
     { name: "Why Us", href: "#why" },
     { name: "Contact", href: "#contact" },
 ];
@@ -84,7 +84,15 @@ export function Navigation() {
                             <Button
                                 key={link.name}
                                 variant="ghost"
-                                onClick={() => link.href === "#contact" ? window.location.href = '/enquiry' : scrollToSection(link.href)}
+                                onClick={() => {
+                                    if ('isRoute' in link && link.isRoute) {
+                                        window.location.href = link.href;
+                                    } else if (link.href === "#contact") {
+                                        window.location.href = '/enquiry';
+                                    } else {
+                                        scrollToSection(link.href);
+                                    }
+                                }}
                                 data-testid={`link-nav-${link.name
                                     .toLowerCase()
                                     .replace(" ", "-")}`}
@@ -135,7 +143,16 @@ export function Navigation() {
                                 key={link.name}
                                 variant="ghost"
                                 className="w-full justify-start text-black"
-                                onClick={() => scrollToSection(link.href)}
+                                onClick={() => {
+                                    if ('isRoute' in link && link.isRoute) {
+                                        window.location.href = link.href;
+                                    } else if (link.href === "#contact") {
+                                        window.location.href = '/enquiry';
+                                    } else {
+                                        scrollToSection(link.href);
+                                    }
+                                    setIsMobileMenuOpen(false);
+                                }}
                                 data-testid={`link-mobile-${link.name
                                     .toLowerCase()
                                     .replace(" ", "-")}`}
