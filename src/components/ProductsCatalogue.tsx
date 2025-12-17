@@ -10,7 +10,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
-import { Leaf, ChevronDown, ChevronUp, Sparkles, Package, CheckCircle2, Box } from "lucide-react";
+import { Leaf, X, Sparkles, Package, CheckCircle2, Box, Eye, ArrowRight } from "lucide-react";
 
 interface ProductSpec {
     attribute: string;
@@ -346,121 +346,205 @@ const packagingFactors = [
     "Destination-country regulations",
 ];
 
-function ProductCard({ product, index }: { product: Product; index: number }) {
-    const [isExpanded, setIsExpanded] = useState(false);
+// Modal Component for Specifications
+function SpecificationsModal({
+    product,
+    isOpen,
+    onClose,
+}: {
+    product: Product;
+    isOpen: boolean;
+    onClose: () => void;
+}) {
+    if (!isOpen) return null;
+
+    return (
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            onClick={onClose}
+        >
+            {/* Backdrop with blur */}
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+
+            {/* Modal Content */}
+            <div
+                className="relative w-full max-w-3xl max-h-[85vh] bg-card rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-300"
+                onClick={(e) => e.stopPropagation()}
+            >
+                {/* Header */}
+                <div className="sticky top-0 z-10 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent backdrop-blur-md border-b border-border/50 px-6 py-5">
+                    <div className="flex items-start justify-between gap-4">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-lg shadow-primary/20">
+                                <Leaf className="w-6 h-6 text-primary-foreground" />
+                            </div>
+                            <div>
+                                <h2 className="text-2xl font-bold text-foreground">
+                                    {product.name}
+                                </h2>
+                                {product.botanicalName && (
+                                    <p className="text-sm text-primary italic mt-0.5">
+                                        {product.botanicalName}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                        <button
+                            onClick={onClose}
+                            className="w-10 h-10 rounded-full bg-muted/80 hover:bg-muted flex items-center justify-center transition-all duration-200 hover:scale-105 group"
+                        >
+                            <X className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                        </button>
+                    </div>
+                </div>
+
+                {/* Table Content */}
+                <div className="overflow-y-auto max-h-[calc(85vh-100px)] p-6">
+                    <div className="rounded-xl border border-border/50 overflow-hidden bg-background/50">
+                        <Table>
+                            <TableHeader>
+                                <TableRow className="bg-muted/30 hover:bg-muted/30">
+                                    <TableHead className="font-bold text-foreground w-2/5 py-4 text-sm uppercase tracking-wide">
+                                        Attribute
+                                    </TableHead>
+                                    <TableHead className="font-bold text-foreground py-4 text-sm uppercase tracking-wide">
+                                        Details
+                                    </TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {product.specifications?.map((spec, specIndex) => (
+                                    <TableRow
+                                        key={specIndex}
+                                        className="hover:bg-muted/20 transition-colors border-b border-border/30 last:border-0"
+                                    >
+                                        <TableCell className="font-semibold text-foreground py-4">
+                                            {spec.attribute}
+                                        </TableCell>
+                                        <TableCell className="text-muted-foreground py-4">
+                                            {spec.details}
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function ProductCard({
+    product,
+    index,
+    onViewSpecs,
+}: {
+    product: Product;
+    index: number;
+    onViewSpecs: () => void;
+}) {
     const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.1 });
 
     return (
         <Card
             ref={ref}
-            className={`overflow-hidden transition-all duration-700 hover:shadow-xl ${isIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            className={`group relative overflow-hidden transition-all duration-700 hover:shadow-2xl hover:shadow-primary/5 border-border/50 hover:border-primary/30 ${isIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
             style={{ transitionDelay: `${(index % 4) * 100}ms` }}
             data-testid={`product-card-${product.id}`}
         >
-            <div className="p-6 md:p-8">
-                {product.image && (
-                    <div className="mb-6 overflow-hidden rounded-xl bg-muted h-48 md:h-56">
-                        <img
-                            src={product.image.src}
-                            alt={product.image.alt}
-                            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                            loading="lazy"
-                        />
-                    </div>
-                )}
-                <div className="flex items-start gap-4 mb-4">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center flex-shrink-0">
-                        <Leaf className="w-7 h-7 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-1">
+            {/* Subtle gradient overlay on hover */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+            {/* Image Section */}
+            {product.image && (
+                <div className="relative h-52 md:h-60 overflow-hidden">
+                    <img
+                        src={product.image.src}
+                        alt={product.image.alt}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                    />
+                    {/* Image overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+
+                    {/* Floating badge */}
+                    {/* <div className="absolute top-4 left-4">
+                        <div className="px-3 py-1.5 bg-background/90 backdrop-blur-md rounded-full border border-border/50 shadow-lg">
+                            <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                                Premium Grade
+                            </span>
+                        </div>
+                    </div> */}
+                </div>
+            )}
+
+            {/* Content Section */}
+            <div className="relative p-6 md:p-7 grid grid-rows-[max-content_max-content_max-content_auto_max-content]">
+                {/* Title & Scientific Name */}
+                <div className="mb-4">
+                    <div className="flex items-center gap-3 mb-2">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center flex-shrink-0 group-hover:from-primary/30 group-hover:to-primary/10 transition-all duration-300">
+                            <Leaf className="w-5 h-5 text-primary" />
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                             {product.name}
                         </h3>
-                        {product.botanicalName && (
-                            <p className="text-sm text-primary/80 italic font-medium">
-                                {product.botanicalName}
-                            </p>
-                        )}
-                        {product.composition && (
-                            <p className="text-sm text-muted-foreground">
-                                <span className="font-medium">Composition:</span> {product.composition}
-                            </p>
-                        )}
                     </div>
+                    {product.botanicalName && (
+                        <p className="text-sm text-primary/70 italic font-medium pl-[52px]">
+                            {product.botanicalName}
+                        </p>
+                    )}
+                    {product.composition && (
+                        <p className="text-sm text-muted-foreground pl-[52px] mt-1">
+                            <span className="font-medium text-foreground/80">Composition:</span>{" "}
+                            {product.composition}
+                        </p>
+                    )}
                 </div>
-
-                <p className="text-muted-foreground leading-relaxed mb-4">
+                {/* Description */}
+                <p className="text-muted-foreground leading-relaxed mb-5 line-clamp-3">
                     {product.description}
                 </p>
 
-                <div className="flex items-center gap-2 mb-4 p-3 bg-primary/5 rounded-lg">
-                    <Sparkles className="w-4 h-4 text-primary flex-shrink-0" />
-                    <p className="text-sm text-foreground">
-                        <span className="font-semibold">Typical Uses:</span> {product.typicalUses}
-                    </p>
+                {/* Typical Uses Card */}
+                <div className="flex items-start gap-3 mb-6 p-4 bg-gradient-to-r from-primary/5 to-transparent rounded-xl border border-primary/10">
+                    <Sparkles className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <div>
+                        <span className="text-xs font-bold text-primary uppercase tracking-wider">
+                            Typical Uses
+                        </span>
+                        <p className="text-sm text-foreground/80 mt-1 leading-relaxed">
+                            {product.typicalUses}
+                        </p>
+                    </div>
                 </div>
-
+                <div></div>
+                {/* Action Button */}
                 {product.specifications && product.specifications.length > 0 && (
-                    <>
-                        <Button
-                            variant="ghost"
-                            className="w-full justify-between text-primary hover:text-primary hover:bg-primary/5"
-                            onClick={() => setIsExpanded(!isExpanded)}
-                            data-testid={`expand-specs-${product.id}`}
-                        >
-                            <span className="font-medium">
-                                {isExpanded ? "Hide Specifications" : "View Specifications"}
-                            </span>
-                            {isExpanded ? (
-                                <ChevronUp className="w-5 h-5" />
-                            ) : (
-                                <ChevronDown className="w-5 h-5" />
-                            )}
-                        </Button>
-
-                        <div
-                            className={`overflow-hidden transition-all duration-500 ${isExpanded ? "max-h-[800px] opacity-100 mt-4" : "max-h-0 opacity-0"
-                                }`}
-                        >
-                            <div className="rounded-lg border overflow-hidden">
-                                <Table>
-                                    <TableHeader>
-                                        <TableRow className="bg-muted/50">
-                                            <TableHead className="font-semibold text-foreground w-1/3">
-                                                Attribute
-                                            </TableHead>
-                                            <TableHead className="font-semibold text-foreground">
-                                                Details
-                                            </TableHead>
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        {product.specifications.map((spec, specIndex) => (
-                                            <TableRow
-                                                key={specIndex}
-                                                className="hover:bg-muted/30 transition-colors"
-                                            >
-                                                <TableCell className="font-medium text-foreground">
-                                                    {spec.attribute}
-                                                </TableCell>
-                                                <TableCell className="text-muted-foreground">
-                                                    {spec.details}
-                                                </TableCell>
-                                            </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
-                            </div>
-                        </div>
-                    </>
+                    <Button
+                        onClick={onViewSpecs}
+                        className="w-full group/btn relative overflow-hidden bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-primary-foreground font-semibold py-6 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+                        data-testid={`expand-specs-${product.id}`}
+                    >
+                        <span className="flex items-center justify-center gap-2">
+                            <Eye className="w-4 h-4" />
+                            View Specifications
+                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" />
+                        </span>
+                    </Button>
                 )}
+
             </div>
         </Card>
     );
 }
 
 export function ProductsCatalogue() {
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
     const { ref: headerRef, isIntersecting: headerVisible } = useIntersectionObserver({
         threshold: 0.2,
     });
@@ -475,146 +559,165 @@ export function ProductsCatalogue() {
     });
 
     return (
-        <section className="py-16 md:py-24 bg-background">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Header Section */}
-                <div
-                    ref={headerRef}
-                    className={`text-center mb-16 transition-all duration-1000 ${headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                        }`}
-                >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
-                        <Leaf className="w-5 h-5 text-primary" />
-                        <span className="text-sm font-semibold text-primary uppercase tracking-wider">
-                            Our Products
-                        </span>
+        <>
+            <section className="py-16 md:py-24 bg-background">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    {/* Header Section */}
+                    <div
+                        ref={headerRef}
+                        className={`text-center mb-16 transition-all duration-1000 ${headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                            }`}
+                    >
+                        <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary/10 rounded-full mb-6 border border-primary/20">
+                            <Leaf className="w-5 h-5 text-primary" />
+                            <span className="text-sm font-bold text-primary uppercase tracking-wider">
+                                Our Products
+                            </span>
+                        </div>
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+                            Export-Grade Ayurvedic
+                            <span className="block bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                                Herbs & Botanicals
+                            </span>
+                        </h1>
+                        <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                            Unity Commerce supplies export-grade Ayurvedic herbs and botanical powders
+                            processed under documented, hygienic, and moisture-controlled conditions.
+                            Each product is sourced from registered farms or verified processors in India,
+                            cleaned and graded according to export requirements, and packed in food-grade
+                            material suitable for bulk shipments.
+                        </p>
+                        <p className="text-base text-muted-foreground/80 mt-4 italic">
+                            All specifications remain consistent across repeated orders unless a buyer
+                            requests a customised grade.
+                        </p>
                     </div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                        Export-Grade Ayurvedic
-                        <span className="block text-primary">Herbs & Botanicals</span>
-                    </h1>
-                    <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                        Unity Commerce supplies export-grade Ayurvedic herbs and botanical powders
-                        processed under documented, hygienic, and moisture-controlled conditions.
-                        Each product is sourced from registered farms or verified processors in India,
-                        cleaned and graded according to export requirements, and packed in food-grade
-                        material suitable for bulk shipments.
-                    </p>
-                    <p className="text-base text-muted-foreground/80 mt-4 italic">
-                        All specifications remain consistent across repeated orders unless a buyer
-                        requests a customised grade.
-                    </p>
-                </div>
 
-                {/* Products Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-20">
-                    {products.map((product, index) => (
-                        <ProductCard key={product.id} product={product} index={index} />
-                    ))}
-                </div>
+                    {/* Products Grid */}
+                    <div className="grid grid-cols-1 md:h-full md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-20">
+                        {products.map((product, index) => (
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                                index={index}
+                                onViewSpecs={() => setSelectedProduct(product)}
+                            />
+                        ))}
+                    </div>
 
-                {/* Additional Products Section */}
-                <div
-                    ref={additionalRef}
-                    className={`mb-20 transition-all duration-1000 ${additionalVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                        }`}
-                >
-                    <Card className="p-8 md:p-10 bg-gradient-to-br from-primary/5 via-background to-primary/5 border-primary/20">
-                        <div className="flex items-start gap-4">
-                            <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                                <Package className="w-6 h-6 text-primary" />
-                            </div>
-                            <div>
-                                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                                    Additional Products
-                                </h2>
-                                <p className="text-muted-foreground leading-relaxed">
-                                    Unity Commerce can supply multiple other herbal powders and plant-based
-                                    raw materials on request. Availability depends on crop cycles,
-                                    processing schedules, and export feasibility for the destination country.
-                                </p>
-                                <Button
-                                    className="mt-6"
-                                    onClick={() => (window.location.href = "/enquiry")}
-                                >
-                                    Request Custom Products
-                                </Button>
-                            </div>
-                        </div>
-                    </Card>
-                </div>
-
-                {/* Quality & Processing Standards */}
-                <div
-                    ref={qualityRef}
-                    className={`mb-16 transition-all duration-1000 ${qualityVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                        }`}
-                >
-                    <Card className="p-8 md:p-10">
-                        <div className="flex items-start gap-4 mb-6">
-                            <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                                <CheckCircle2 className="w-6 h-6 text-primary" />
-                            </div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                                Quality & Processing Standards
-                            </h2>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {qualityStandards.map((standard, index) => (
-                                <div
-                                    key={index}
-                                    className="flex items-center gap-3 p-4 bg-muted/30 rounded-lg"
-                                >
-                                    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                                    <span className="text-foreground">{standard}</span>
+                    {/* Additional Products Section */}
+                    <div
+                        ref={additionalRef}
+                        className={`mb-20 transition-all duration-1000 ${additionalVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                            }`}
+                    >
+                        <Card className="p-8 md:p-10 bg-gradient-to-br from-primary/5 via-background to-primary/5 border-primary/20 hover:border-primary/30 transition-colors duration-300">
+                            <div className="flex items-start gap-5">
+                                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20">
+                                    <Package className="w-7 h-7 text-primary-foreground" />
                                 </div>
-                            ))}
-                        </div>
-                    </Card>
-                </div>
-
-                {/* Export Packaging */}
-                <div
-                    ref={packagingRef}
-                    className={`transition-all duration-1000 ${packagingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                        }`}
-                >
-                    <Card className="p-8 md:p-10">
-                        <div className="flex items-start gap-4 mb-6">
-                            <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                                <Box className="w-6 h-6 text-primary" />
+                                <div>
+                                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                                        Additional Products
+                                    </h2>
+                                    <p className="text-muted-foreground leading-relaxed mb-6">
+                                        Unity Commerce can supply multiple other herbal powders and plant-based
+                                        raw materials on request. Availability depends on crop cycles,
+                                        processing schedules, and export feasibility for the destination country.
+                                    </p>
+                                    <Button
+                                        className="group bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+                                        onClick={() => (window.location.href = "/enquiry")}
+                                    >
+                                        Request Custom Products
+                                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                    </Button>
+                                </div>
                             </div>
-                            <div>
-                                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-                                    Export Packaging
+                        </Card>
+                    </div>
+
+                    {/* Quality & Processing Standards */}
+                    <div
+                        ref={qualityRef}
+                        className={`mb-16 transition-all duration-1000 ${qualityVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                            }`}
+                    >
+                        <Card className="p-8 md:p-10 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+                            <div className="flex items-start gap-5 mb-8">
+                                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20">
+                                    <CheckCircle2 className="w-7 h-7 text-primary-foreground" />
+                                </div>
+                                <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                                    Quality & Processing Standards
                                 </h2>
-                                <p className="text-muted-foreground">
-                                    Packaging is selected based on:
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {qualityStandards.map((standard, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center gap-4 p-5 bg-muted/30 rounded-xl border border-border/50 hover:border-primary/20 hover:bg-muted/50 transition-all duration-300 group"
+                                    >
+                                        <div className="w-3 h-3 rounded-full bg-gradient-to-r from-primary to-primary/70 flex-shrink-0 group-hover:scale-125 transition-transform duration-300" />
+                                        <span className="text-foreground font-medium">{standard}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </Card>
+                    </div>
+
+                    {/* Export Packaging */}
+                    <div
+                        ref={packagingRef}
+                        className={`transition-all duration-1000 ${packagingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                            }`}
+                    >
+                        <Card className="p-8 md:p-10 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+                            <div className="flex items-start gap-5 mb-8">
+                                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20">
+                                    <Box className="w-7 h-7 text-primary-foreground" />
+                                </div>
+                                <div>
+                                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                                        Export Packaging
+                                    </h2>
+                                    <p className="text-muted-foreground">
+                                        Packaging is selected based on:
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                                {packagingFactors.map((factor, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center gap-4 p-5 bg-muted/30 rounded-xl border border-border/50 hover:border-primary/20 hover:bg-muted/50 transition-all duration-300 group"
+                                    >
+                                        <div className="w-3 h-3 rounded-full bg-gradient-to-r from-primary to-primary/70 flex-shrink-0 group-hover:scale-125 transition-transform duration-300" />
+                                        <span className="text-foreground font-medium">{factor}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="p-5 bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl border border-primary/20">
+                                <p className="text-foreground font-medium text-center">
+                                    Standard pack sizes range from{" "}
+                                    <span className="text-primary font-bold">1 kg retail packs</span> to{" "}
+                                    <span className="text-primary font-bold">25-50 kg bulk bags</span>,
+                                    as per buyer requirements.
                                 </p>
                             </div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                            {packagingFactors.map((factor, index) => (
-                                <div
-                                    key={index}
-                                    className="flex items-center gap-3 p-4 bg-muted/30 rounded-lg"
-                                >
-                                    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                                    <span className="text-foreground">{factor}</span>
-                                </div>
-                            ))}
-                        </div>
-                        <div className="p-4 bg-primary/10 rounded-lg">
-                            <p className="text-foreground font-medium">
-                                Standard pack sizes range from{" "}
-                                <span className="text-primary font-bold">1 kg retail packs</span> to{" "}
-                                <span className="text-primary font-bold">25-50 kg bulk bags</span>,
-                                as per buyer requirements.
-                            </p>
-                        </div>
-                    </Card>
+                        </Card>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            {/* Specifications Modal */}
+            {selectedProduct && (
+                <SpecificationsModal
+                    product={selectedProduct}
+                    isOpen={!!selectedProduct}
+                    onClose={() => setSelectedProduct(null)}
+                />
+            )}
+        </>
     );
 }
