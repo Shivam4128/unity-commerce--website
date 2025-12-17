@@ -1,17 +1,17 @@
 const quickLinks = [
   { name: "About", href: "/about-us" },
-  { name: "Products", href: "#products" },
+  { name: "Products", href: "/products" },
   { name: "Certifications", href: "/certificates" },
   { name: "Contact", href: "/enquiry" },
 ];
 
 export function Footer() {
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  // const scrollToSection = (href: string) => {
+  //   const element = document.querySelector(href);
+  //   if (element) {
+  //     element.scrollIntoView({ behavior: "smooth", block: "start" });
+  //   }
+  // };
 
   return (
     <footer className="bg-card border-t border-card-border">

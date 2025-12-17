@@ -1,7 +1,6 @@
-import { Sprout, Wheat, Droplets, Flower2 } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import {Card} from "@/components/ui/card";
+import {useIntersectionObserver} from "@/hooks/useIntersectionObserver";
+import {Droplets, Flower2, Sprout, Wheat} from "lucide-react";
 
 const products = [
   {
