@@ -1,8 +1,8 @@
 const quickLinks = [
-  { name: "About", href: "#about" },
+  { name: "About", href: "/about-us" },
   { name: "Products", href: "#products" },
-  { name: "Certifications", href: "#certifications" },
-  { name: "Contact", href: "#contact" },
+  { name: "Certifications", href: "/certificates" },
+  { name: "Contact", href: "/enquiry" },
 ];
 
 export function Footer() {
@@ -18,8 +18,8 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <img src="/logo.webp" alt="logo" className="h-[50px] aspect-auto" />
+            <div className="flex items-center gap-2 ">
+              <img src="/footer_logo.webp" alt="logo" className="h-[120px] max-sm:h-[100px] aspect-auto -translate-y-4" />
               {/* <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
                 <Leaf className="w-6 h-6 text-primary-foreground" />
               </div>
@@ -38,7 +38,7 @@ export function Footer() {
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <button
-                    onClick={() => scrollToSection(link.href)}
+                    onClick={() => window.location.href = link.href}
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors hover-elevate rounded px-2 py-1 -ml-2"
                     data-testid={`link-footer-${link.name.toLowerCase()}`}
                   >
