@@ -6,12 +6,14 @@ import {
     Radio,
     TextInput,
     Title,
+    Textarea
 } from "@mantine/core";
 import { useState } from "react";
 
 export default function EnquiryForm() {
     const [loading, setLoading] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [area, setArea] = useState<string>("");
     const [products, setProducts] = useState<Array<string>>([]);
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -28,11 +30,12 @@ export default function EnquiryForm() {
             country: formData.get("entry.402125416"),
             products: products.join(", "),
             form: formData.get("entry.566987055_sentinel"),
+            query: area,
         };
 
         try {
             const res = await fetch(
-                "https://script.google.com/macros/s/AKfycbyn3KcPH6CtlLjvoM8W6DrxQCeNFOf4s87v26zpVa7dnbIZ48FVGpAqhJ_1Ovj0A7Ex/exec",
+                "https://script.google.com/macros/s/AKfycbxReJpy--fh7GjsfY5v95gjFlkjMarcRIvLpCmTNW-kBLRLOAFRMlsz59AydkxVvpsJ/exec",
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -190,6 +193,14 @@ export default function EnquiryForm() {
                                 </div>
                             </Radio.Group>
                         </Box>
+                        {/* Message */}
+                        <Textarea
+                            label="Additional Query"
+                            className="mb-2"
+                            onChange={(e) => setArea(e.target.value)}
+                            value={area}
+                            size="sm"
+                        />
                         <Button type="submit" loading={loading}>
                             Submit
                         </Button>

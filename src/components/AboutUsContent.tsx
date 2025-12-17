@@ -96,13 +96,7 @@ export function AboutUsContent() {
                         </p>
                         <div className="p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg">
                             <p className="text-foreground">
-                                Unity Commerce does <strong className="text-primary">not</strong> deal in finished
-                                medicines or therapeutic products. We specialize exclusively in raw herbs and
-                                natural ingredients, prepared in forms suitable for further processing,
-                                formulation, and packaging by the buyer. By maintaining clear standards for drying,
-                                grading, and packing, we ensure materials are suitable for powders, capsules,
-                                tablets, decoctions, extracts, cosmetics, and functional blends, depending on
-                                manufacturing requirements.
+                                Unity Commerce currently focuses on supplying raw herbs and plant-based ingredients prepared in formats suitable for processing, formulation, and packaging by buyers. Our operations emphasize consistency, traceability, and material integrity across all herb and ingredient batches supplied. By applying defined standards for drying, grading, and packing, we support clients with materials suitable for powders, capsules, tablets, decoctions, extracts, cosmetics, and functional blends based on their manufacturing needs.
                             </p>
                         </div>
                     </Card>
@@ -116,7 +110,7 @@ export function AboutUsContent() {
                 >
                     <div className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                            Introducing <span className="text-primary">Ashwayu</span>
+                            Introducing <a href="https://ashwayu.com" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:!text-[40px] hover:text-primary transition-all duration-200 cursor-pointer">Ashwayu</a>
                         </h2>
                         <p className="text-xl text-muted-foreground">
                             The Consumer Brand of Unity Commerce
@@ -169,10 +163,7 @@ export function AboutUsContent() {
                             <h3 className="text-2xl font-bold text-foreground">Ashwayu Herbal</h3>
                         </div>
                         <p className="text-muted-foreground leading-relaxed">
-                            This category includes traditional Ayurvedic single-herb powders such as
-                            Ashwagandha, Neem, Moringa, Giloy, Shatavari, Triphala ingredients, and similar raw
-                            herbal materials. These products are intended for mixing, decoction preparation,
-                            blending, and other household or formulation-related uses.
+                            Ashwayu Herbal includes traditional Ayurvedic single herb powders such as Ashwagandha, Neem, Moringa, Giloy, Shatavari, Triphala ingredients, and similar raw herbal materials. These products are intended for mixing, decoction preparation, blending, and other household or formulation related uses within everyday personal or customary preparation routines and practices globally.
                         </p>
                         <div className="mt-6 flex flex-wrap gap-2">
                             {["Ashwagandha", "Neem", "Moringa", "Giloy", "Shatavari", "Triphala"].map((herb) => (
@@ -199,13 +190,10 @@ export function AboutUsContent() {
                             <h3 className="text-2xl font-bold text-foreground">Ashwayu Naturals</h3>
                         </div>
                         <p className="text-muted-foreground leading-relaxed">
-                            This line includes natural, plant-based ingredients commonly used for cosmetic,
-                            personal-care, and functional household purposes, such as aloe-based powders, herbal
-                            flakes, and other plant-derived materials. These products are positioned for general
-                            natural-use applications without making medicinal claims.
+                            Ashwayu Natural focuses on finished cosmetic and personal-care products developed using plant-based and botanical ingredients, intended for routine skincare, haircare, and functional household use. These products are formulated for external application and everyday personal-care routines, with product design, usage, and communication aligned to cosmetic use categories.
                         </p>
                         <div className="mt-6 flex flex-wrap gap-2">
-                            {["Aloe Powders", "Herbal Flakes", "Plant Extracts", "Natural Care"].map((item) => (
+                            {["Plant Based", "Botanical Ingredients", "Routine Skincare", "Haircare"].map((item) => (
                                 <span
                                     key={item}
                                     className="px-3 py-1 bg-blue-500/10 text-blue-700 dark:text-blue-400 rounded-full text-sm font-medium"
