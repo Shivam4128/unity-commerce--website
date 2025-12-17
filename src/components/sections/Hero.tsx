@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
-  const scrollToSection = (id: string) => {
-    const element = document.querySelector(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  // const scrollToSection = (id: string) => {
+  //   const element = document.querySelector(id);
+  //   if (element) {
+  //     element.scrollIntoView({ behavior: "smooth", block: "start" });
+  //   }
+  // };
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -38,7 +38,7 @@ export function Hero() {
             size="lg"
             variant="default"
             className="text-lg px-8 py-6 h-auto min-h-0"
-            onClick={() => scrollToSection("#products")}
+            onClick={() => window.location.href = "/products"}
             data-testid="button-hero-explore"
           >
             Explore Our Products

@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import {Button} from "@/components/ui/button";
+import {Menu, X} from "lucide-react";
+import {useEffect, useState} from "react";
 
 const navLinks = [
     { name: "About", href: "/about-us", isRoute: true },
-    { name: "Products", href: "/products" },
+    { name: "Products", href: "/products", isRoute: true },
     { name: "Certifications", href: "/certificates", isRoute: true },
     { name: "Reach", href: "/reach", isRoute: true },
     { name: "Why Us", href: "#why" },
@@ -33,12 +33,13 @@ export function Navigation() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${window.location.pathname === "/"
-                ? isScrolled
-                    ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
-                    : "bg-transparent text-white"
-                : "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
-                }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+                window.location.pathname === "/"
+                    ? isScrolled
+                        ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
+                        : "bg-transparent text-white"
+                    : "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
+            }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
                 <div className="flex items-center justify-between h-20">
@@ -85,10 +86,10 @@ export function Navigation() {
                                 key={link.name}
                                 variant="ghost"
                                 onClick={() => {
-                                    if ('isRoute' in link && link.isRoute) {
+                                    if ("isRoute" in link && link.isRoute) {
                                         window.location.href = link.href;
                                     } else if (link.href === "#contact") {
-                                        window.location.href = '/enquiry';
+                                        window.location.href = "/enquiry";
                                     } else {
                                         scrollToSection(link.href);
                                     }
@@ -105,7 +106,7 @@ export function Navigation() {
                     <div className="hidden md:flex items-center gap-3">
                         <Button
                             variant="default"
-                            onClick={() => scrollToSection("#products")}
+                            onClick={() => (window.location.href = "/products")}
                             data-testid="button-explore-products"
                         >
                             Explore Products
@@ -144,10 +145,10 @@ export function Navigation() {
                                 variant="ghost"
                                 className="w-full justify-start text-black"
                                 onClick={() => {
-                                    if ('isRoute' in link && link.isRoute) {
+                                    if ("isRoute" in link && link.isRoute) {
                                         window.location.href = link.href;
                                     } else if (link.href === "#contact") {
-                                        window.location.href = '/enquiry';
+                                        window.location.href = "/enquiry";
                                     } else {
                                         scrollToSection(link.href);
                                     }

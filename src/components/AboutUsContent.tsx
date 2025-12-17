@@ -110,7 +110,7 @@ export function AboutUsContent() {
                 >
                     <div className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                            Introducing <a href="https://ashwayu.com" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:!text-[40px] hover:text-primary transition-all duration-200 cursor-pointer">Ashwayu</a>
+                            Introducing <a href="https://ashwayu.com" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:!text-[40px] hover:text-primary transition-all duration-200 cursor-pointer">ASHWAYU</a>
                         </h2>
                         <p className="text-xl text-muted-foreground">
                             The Consumer Brand of Unity Commerce
