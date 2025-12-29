@@ -1,14 +1,14 @@
-import {Button} from "@/components/ui/button";
-import {Menu, X} from "lucide-react";
-import {useEffect, useState} from "react";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const navLinks = [
     { name: "About", href: "/about-us", isRoute: true },
     { name: "Products", href: "/products", isRoute: true },
     { name: "Certifications", href: "/certificates", isRoute: true },
     { name: "Reach", href: "/reach", isRoute: true },
-    { name: "Why Us", href: "#why" },
-    { name: "Contact", href: "#contact" },
+    { name: "Why Us", href: "/why-us", isRoute: true },
+    { name: "Contact", href: "/contact", isRoute: true },
 ];
 
 export function Navigation() {
@@ -33,13 +33,12 @@ export function Navigation() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                window.location.pathname === "/"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${window.location.pathname === "/"
                     ? isScrolled
                         ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
                         : "bg-transparent text-white"
                     : "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
-            }`}
+                }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
                 <div className="flex items-center justify-between h-20">

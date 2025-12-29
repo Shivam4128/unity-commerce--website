@@ -109,12 +109,38 @@ export function AboutUsContent() {
                         }`}
                 >
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                            Introducing <a href="https://ashwayu.com" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:!text-[40px] hover:text-primary transition-all duration-200 cursor-pointer">ASHWAYU</a>
-                        </h2>
-                        <p className="text-xl text-muted-foreground">
-                            The Consumer Brand of Unity Commerce
-                        </p>
+                        <div className="flex flex-col items-center gap-4">
+                            <a
+                                href="https://ashwayu.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative inline-flex items-center gap-6 px-8 py-5 rounded-3xl bg-gradient-to-r from-primary/10 via-background to-primary/10 border border-primary/30 shadow-lg shadow-primary/10 transition-transform duration-300 hover:scale-[1.03] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                            >
+                                <div className="p-3 rounded-2xl bg-background/70 border border-primary/20 shadow-sm">
+                                    <img
+                                        src="/ashwayu.webp"
+                                        alt="Ashwayu logo"
+                                        className="h-20 w-auto object-contain drop-shadow-md"
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <div className="text-left">
+                                    <p className="text-xs md:text-sm uppercase tracking-[0.28em] text-primary font-semibold mb-2">
+                                        Introducing
+                                    </p>
+                                    <span className="block text-3xl md:text-4xl font-bold text-foreground transition-colors group-hover:text-green-600">
+                                        Ashwayu
+                                    </span>
+                                    <p className="text-sm md:text-base text-muted-foreground mt-1">
+                                        Premium Ayurvedic wellness crafted for consumers
+                                    </p>
+                                </div>
+                                <div className="absolute inset-0 rounded-3xl border border-primary/10 blur-[1px] pointer-events-none" />
+                            </a>
+                            <p className="text-xl text-muted-foreground">
+                                The Consumer Brand of Unity Commerce
+                            </p>
+                        </div>
                     </div>
 
                     <Card className="p-8 md:p-10 bg-gradient-to-br from-primary/5 via-background to-primary/5 border-primary/20">

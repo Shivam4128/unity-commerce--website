@@ -10,6 +10,8 @@ import AboutUs from "@/pages/AboutUs";
 import Certificates from "@/pages/Certificates";
 import Reach from "@/pages/Reach";
 import Products from "@/pages/Products";
+import WhyUs from "@/pages/WhyUs";
+import ContactUs from "@/pages/ContactUs";
 
 function Router() {
   return (
@@ -19,6 +21,8 @@ function Router() {
       <Route path="/certificates" component={Certificates} />
       <Route path="/reach" component={Reach} />
       <Route path="/products" component={Products} />
+      <Route path="/why-us" component={WhyUs} />
+      <Route path="/contact" component={ContactUs} />
       <Route path="/enquiry" component={Enquiry} />
       <Route component={NotFound} />
     </Switch>
