@@ -11,6 +11,7 @@ import {
     CheckCircle2,
     ZoomIn,
     X,
+    Download,
 } from "lucide-react";
 
 interface Certification {
@@ -22,6 +23,9 @@ interface Certification {
     ensures: string[];
     note?: string;
     imagePlaceholder: string;
+    downloadUrl?: string;
+    imageSrc?: string;
+    symbol?: string;
 }
 
 const certifications: Certification[] = [
@@ -39,6 +43,9 @@ const certifications: Certification[] = [
         ],
         note: "This registration is essential for exporting products such as dried herbs, plant powders, roots, seeds, and similar natural materials.",
         imagePlaceholder: "APEDA Certificate",
+        downloadUrl: "/certificates/APEDA.pdf",
+        // imageSrc: "/certificates/APEDA.pdf",
+        symbol: "APEDA",
     },
     {
         id: 2,
@@ -54,6 +61,9 @@ const certifications: Certification[] = [
         ],
         note: "FSSAI compliance applies to items such as herbal powders, dried leaves, roots intended for tea blends, nutraceutical inputs, and similar raw materials.",
         imagePlaceholder: "FSSAI Certificate",
+        downloadUrl: "/certificates/FSSAI.pdf",
+        // imageSrc: "/certificates/FSSAI.pdf",
+        symbol: "FSSAI",
     },
     {
         id: 3,
@@ -69,6 +79,9 @@ const certifications: Certification[] = [
         ],
         note: "Without an IEC, international trade is not legally permitted. Our IEC registration confirms that every transaction complies with India's foreign trade regulations.",
         imagePlaceholder: "IEC Certificate",
+        downloadUrl: "/certificates/IEC.pdf",
+        // imageSrc: "/certificates/IEC.pdf",
+        symbol: "IEC",
     },
     {
         id: 4,
@@ -84,22 +97,73 @@ const certifications: Certification[] = [
         ],
         note: "This structured approach supports supply consistency for global buyers who rely on repeatable quality standards.",
         imagePlaceholder: "ISO Certificate",
+        downloadUrl: "/certificates/ISO.pdf",
+        // imageSrc: "/certificates/ISO.pdf",
+        symbol: "ISO",
+    },
+    {
+        id: 5,
+        title: "MSME Registration",
+        authority: "Ministry of Micro, Small & Medium Enterprises",
+        icon: Award,
+        description:
+            "Unity Commerce is registered under MSME, affirming our status as a compliant, growth-focused enterprise within India's regulated ecosystem.",
+        ensures: [
+            "Operates with recognised MSME credentials for transparency in domestic and export dealings",
+            "Eligible for government-backed schemes that support reliable production and logistics",
+            "Demonstrates financial and operational compliance expected from verified MSME entities",
+        ],
+        note: "MSME registration underpins smoother procurement, finance, and logistics pathways, benefiting buyers with dependable fulfilment.",
+        imagePlaceholder: "MSME Certificate",
+        downloadUrl: "https://drive.google.com/uc?export=download&id=1c8ZNPywlx-WN7JrbZXbLBg8roV-_cBIU",
+        imageSrc: "https://drive.google.com/thumbnail?id=1c8ZNPywlx-WN7JrbZXbLBg8roV-_cBIU&sz=w1000",
+        symbol: "MSME",
     },
 ];
 
-// Image Modal Component
+// Helper function to extract Google Drive file ID and create preview URL
+function getGoogleDrivePdfViewUrl(url: string): string | null {
+    // Pattern for download URL: https://drive.google.com/uc?export=download&id=FILE_ID
+    const downloadMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+    if (downloadMatch) {
+        return `https://drive.google.com/file/d/${downloadMatch[1]}/preview`;
+    }
+
+    // Pattern for direct file URL: https://drive.google.com/file/d/FILE_ID/...
+    const fileMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+    if (fileMatch) {
+        return `https://drive.google.com/file/d/${fileMatch[1]}/preview`;
+    }
+
+    // Pattern for thumbnail URL: https://drive.google.com/thumbnail?id=FILE_ID
+    const thumbnailMatch = url.match(/thumbnail\?id=([a-zA-Z0-9_-]+)/);
+    if (thumbnailMatch) {
+        return `https://drive.google.com/file/d/${thumbnailMatch[1]}/preview`;
+    }
+
+    return null;
+}
+
+// Image/PDF Modal Component
 function ImageModal({
     isOpen,
     onClose,
     imageSrc,
+    downloadUrl,
     title,
 }: {
     isOpen: boolean;
     onClose: () => void;
     imageSrc: string | null;
+    downloadUrl?: string;
     title: string;
 }) {
     if (!isOpen) return null;
+
+    // Determine if we should show a PDF viewer
+    const isGoogleDriveLink = downloadUrl?.includes("drive.google.com");
+    const isLocalPdf = downloadUrl?.endsWith(".pdf") && !isGoogleDriveLink;
+    const googleDrivePdfUrl = isGoogleDriveLink ? getGoogleDrivePdfViewUrl(downloadUrl!) : null;
 
     return (
         <div
@@ -107,34 +171,67 @@ function ImageModal({
             onClick={onClose}
         >
             <div
-                className="relative max-w-4xl max-h-[90vh] w-full mx-4"
+                className="relative max-w-5xl max-h-[95vh] w-full mx-4"
                 onClick={(e) => e.stopPropagation()}
             >
                 <button
                     onClick={onClose}
-                    className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+                    className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
                 >
                     <X className="w-8 h-8" />
                 </button>
-                <div className="bg-background rounded-lg overflow-hidden shadow-2xl">
-                    <div className="p-4 border-b">
+                <div className="bg-background rounded-lg shadow-2xl max-h-[90vh] overflow-hidden">
+                    <div className="p-4 border-b flex items-center justify-between">
                         <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+                        {downloadUrl && (
+                            <a
+                                href={downloadUrl}
+                                download
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-primary hover:bg-primary/10 rounded-md transition-colors"
+                            >
+                                <Download className="w-4 h-4" />
+                                Download
+                            </a>
+                        )}
                     </div>
-                    {imageSrc ? (
-                        <img
-                            src={imageSrc}
-                            alt={title}
-                            className="w-full h-auto max-h-[70vh] object-contain"
-                        />
-                    ) : (
-                        <div className="flex items-center justify-center h-96 bg-muted">
-                            <div className="text-center text-muted-foreground">
-                                <Award className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                                <p className="text-lg font-medium">Certificate Image Coming Soon</p>
-                                <p className="text-sm mt-2">Upload your certificate image here</p>
+                    <div className="w-full">
+                        {/* Google Drive PDF Viewer */}
+                        {googleDrivePdfUrl ? (
+                            <iframe
+                                src={googleDrivePdfUrl}
+                                title={title}
+                                className="w-full h-[80vh] border-0"
+                                allow="autoplay"
+                            />
+                        ) : isLocalPdf && downloadUrl ? (
+                            /* Local PDF Viewer */
+                            <iframe
+                                src={downloadUrl}
+                                title={title}
+                                className="w-full h-[80vh] border-0"
+                            />
+                        ) : imageSrc ? (
+                            /* Image Viewer */
+                            <div className="max-h-[80vh] overflow-auto">
+                                <img
+                                    src={imageSrc}
+                                    alt={title}
+                                    className="w-full h-auto object-contain"
+                                />
                             </div>
-                        </div>
-                    )}
+                        ) : (
+                            /* Placeholder */
+                            <div className="flex items-center justify-center h-96 bg-muted">
+                                <div className="text-center text-muted-foreground">
+                                    <Award className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                                    <p className="text-lg font-medium">Certificate Coming Soon</p>
+                                    <p className="text-sm mt-2">Certificate will be available for viewing shortly</p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
@@ -153,6 +250,15 @@ function CertificationCard({
 }) {
     const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.1 });
     const Icon = certification.icon;
+    const symbol =
+        certification.symbol ||
+        certification.title
+            .split(" ")
+            .filter(Boolean)
+            .slice(0, 3)
+            .map((word) => word[0])
+            .join("")
+            .toUpperCase();
 
     return (
         <Card
@@ -167,10 +273,34 @@ function CertificationCard({
                     className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-background p-6 flex items-center justify-center min-h-[200px] lg:min-h-[300px] cursor-pointer group"
                     onClick={() => onImageClick(certification)}
                 >
+                    <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 dark:bg-black/70 border border-primary/20 text-xs font-semibold text-primary shadow-sm">
+                        {symbol}
+                    </div>
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
                         <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                            <div className="bg-white/90 dark:bg-black/90 rounded-full p-3 shadow-lg">
-                                <ZoomIn className="w-6 h-6 text-primary" />
+                            <div className="flex items-center gap-3">
+                                <button
+                                    type="button"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        onImageClick(certification);
+                                    }}
+                                    className="bg-white/90 dark:bg-black/90 rounded-full p-3 shadow-lg hover:-translate-y-0.5 transition-transform"
+                                    aria-label={`View ${certification.title}`}
+                                >
+                                    <ZoomIn className="w-6 h-6 text-primary" />
+                                </button>
+                                {certification.downloadUrl && (
+                                    <a
+                                        href={certification.downloadUrl}
+                                        download
+                                        onClick={(e) => e.stopPropagation()}
+                                        className="bg-white/90 dark:bg-black/90 rounded-full p-3 shadow-lg hover:-translate-y-0.5 transition-transform"
+                                        aria-label={`Download ${certification.title}`}
+                                    >
+                                        <Download className="w-6 h-6 text-primary" />
+                                    </a>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -322,7 +452,8 @@ export function CertificatesContent() {
             <ImageModal
                 isOpen={modalOpen}
                 onClose={handleCloseModal}
-                imageSrc={null}
+                imageSrc={selectedCert?.imageSrc || null}
+                downloadUrl={selectedCert?.downloadUrl}
                 title={selectedCert?.imagePlaceholder || "Certificate"}
             />
         </section>

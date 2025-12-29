@@ -164,7 +164,7 @@ export function Navigation() {
                             <Button
                                 variant="default"
                                 className="w-full"
-                                onClick={() => scrollToSection("#products")}
+                                onClick={() => window.location.href = "/products"}
                                 data-testid="button-mobile-explore"
                             >
                                 Explore Products
