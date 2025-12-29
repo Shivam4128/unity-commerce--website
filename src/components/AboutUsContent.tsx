@@ -4,6 +4,8 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import {
     Building2,
     Leaf,
+    Flower2,
+    Droplets,
     Sparkles,
     Package,
     FileCheck,
@@ -179,17 +181,17 @@ export function AboutUsContent() {
                     {/* Ashwayu Herbal */}
                     <Card
                         ref={herbalRef}
-                        className={`p-8 transition-all duration-1000 ${herbalVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                            }`}
-                    >
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
-                                <Leaf className="w-6 h-6 text-green-600" />
-                            </div>
-                            <h3 className="text-2xl font-bold text-foreground">Ashwayu Herbal</h3>
+                    className={`p-8 transition-all duration-1000 ${herbalVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        }`}
+                >
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
+                            <Flower2 className="w-6 h-6 text-green-600" />
                         </div>
-                        <p className="text-muted-foreground leading-relaxed">
-                            Ashwayu Herbal includes traditional Ayurvedic single herb powders such as Ashwagandha, Neem, Moringa, Giloy, Shatavari, Triphala ingredients, and similar raw herbal materials. These products are intended for mixing, decoction preparation, blending, and other household or formulation related uses within everyday personal or customary preparation routines and practices globally.
+                        <h3 className="text-2xl font-bold text-foreground">Ashwayu Herbal</h3>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                        Ashwayu Herbal includes traditional Ayurvedic single herb powders such as Ashwagandha, Neem, Moringa, Giloy, Shatavari, Triphala ingredients, and similar raw herbal materials. These products are intended for mixing, decoction preparation, blending, and other household or formulation related uses within everyday personal or customary preparation routines and practices globally.
                         </p>
                         <div className="mt-6 flex flex-wrap gap-2">
                             {["Ashwagandha", "Neem", "Moringa", "Giloy", "Shatavari", "Triphala"].map((herb) => (
@@ -206,17 +208,17 @@ export function AboutUsContent() {
                     {/* Ashwayu Naturals */}
                     <Card
                         ref={naturalsRef}
-                        className={`p-8 transition-all duration-1000 delay-100 ${naturalsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                            }`}
-                    >
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
-                                <Sparkles className="w-6 h-6 text-blue-600" />
-                            </div>
-                            <h3 className="text-2xl font-bold text-foreground">Ashwayu Naturals</h3>
+                    className={`p-8 transition-all duration-1000 delay-100 ${naturalsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        }`}
+                >
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                            <Droplets className="w-6 h-6 text-blue-600" />
                         </div>
-                        <p className="text-muted-foreground leading-relaxed">
-                            Ashwayu Natural focuses on finished cosmetic and personal-care products developed using plant-based and botanical ingredients, intended for routine skincare, haircare, and functional household use. These products are formulated for external application and everyday personal-care routines, with product design, usage, and communication aligned to cosmetic use categories.
+                        <h3 className="text-2xl font-bold text-foreground">Ashwayu Naturals</h3>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                        Ashwayu Natural focuses on finished cosmetic and personal-care products developed using plant-based and botanical ingredients, intended for routine skincare, haircare, and functional household use. These products are formulated for external application and everyday personal-care routines, with product design, usage, and communication aligned to cosmetic use categories.
                         </p>
                         <div className="mt-6 flex flex-wrap gap-2">
                             {["Plant Based", "Botanical Ingredients", "Routine Skincare", "Haircare"].map((item) => (

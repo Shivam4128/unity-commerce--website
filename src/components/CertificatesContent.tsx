@@ -44,7 +44,7 @@ const certifications: Certification[] = [
         note: "This registration is essential for exporting products such as dried herbs, plant powders, roots, seeds, and similar natural materials.",
         imagePlaceholder: "APEDA Certificate",
         downloadUrl: "/certificates/APEDA.pdf",
-        // imageSrc: "/certificates/APEDA.pdf",
+        imageSrc: "/images/certificates/APEDA.jpg",
         symbol: "APEDA",
     },
     {
@@ -62,7 +62,7 @@ const certifications: Certification[] = [
         note: "FSSAI compliance applies to items such as herbal powders, dried leaves, roots intended for tea blends, nutraceutical inputs, and similar raw materials.",
         imagePlaceholder: "FSSAI Certificate",
         downloadUrl: "/certificates/FSSAI.pdf",
-        // imageSrc: "/certificates/FSSAI.pdf",
+        imageSrc: "/images/certificates/FSSAI.jpg",
         symbol: "FSSAI",
     },
     {
@@ -80,7 +80,7 @@ const certifications: Certification[] = [
         note: "Without an IEC, international trade is not legally permitted. Our IEC registration confirms that every transaction complies with India's foreign trade regulations.",
         imagePlaceholder: "IEC Certificate",
         downloadUrl: "/certificates/IEC.pdf",
-        // imageSrc: "/certificates/IEC.pdf",
+        imageSrc: "/images/certificates/IEC.jpg",
         symbol: "IEC",
     },
     {
@@ -98,7 +98,7 @@ const certifications: Certification[] = [
         note: "This structured approach supports supply consistency for global buyers who rely on repeatable quality standards.",
         imagePlaceholder: "ISO Certificate",
         downloadUrl: "/certificates/ISO.pdf",
-        // imageSrc: "/certificates/ISO.pdf",
+        imageSrc: "/images/certificates/ISO.jpg",
         symbol: "ISO",
     },
     {
@@ -116,8 +116,26 @@ const certifications: Certification[] = [
         note: "MSME registration underpins smoother procurement, finance, and logistics pathways, benefiting buyers with dependable fulfilment.",
         imagePlaceholder: "MSME Certificate",
         downloadUrl: "https://drive.google.com/uc?export=download&id=1c8ZNPywlx-WN7JrbZXbLBg8roV-_cBIU",
-        imageSrc: "https://drive.google.com/thumbnail?id=1c8ZNPywlx-WN7JrbZXbLBg8roV-_cBIU&sz=w1000",
+        imageSrc: "/images/certificates/MSME.jpg",
         symbol: "MSME",
+    },
+    {
+        id: 6,
+        title: "GMP Compliance",
+        authority: "Good Manufacturing Practice Alignment",
+        icon: CheckCircle2,
+        description:
+            "Processing partners follow GMP-aligned practices to ensure hygienic handling, traceability, and consistent product integrity across batches.",
+        ensures: [
+            "Raw materials are handled in clean, well-documented environments",
+            "Process controls support repeatable quality for every shipment",
+            "Batch records and traceability are maintained for audits and compliance",
+        ],
+        note: "GMP alignment reinforces reliability for buyers requiring steady, documented production standards.",
+        imagePlaceholder: "GMP Certificate",
+        downloadUrl: "/images/certificates/GMP.jpg",
+        imageSrc: "/images/certificates/GMP.jpg",
+        symbol: "GMP",
     },
 ];
 
@@ -304,14 +322,25 @@ function CertificationCard({
                             </div>
                         </div>
                     </div>
-                    <div className="text-center">
-                        <div className="w-20 h-20 mx-auto mb-4 rounded-xl bg-primary/20 flex items-center justify-center">
-                            <Icon className="w-10 h-10 text-primary" />
+                    {certification.imageSrc ? (
+                        <div className="w-full h-full flex items-center justify-center">
+                            <img
+                                src={certification.imageSrc}
+                                alt={certification.title}
+                                className="max-h-[240px] lg:max-h-[280px] w-auto object-contain rounded-lg shadow-sm border border-primary/10"
+                                loading="lazy"
+                            />
                         </div>
-                        <p className="text-sm font-medium text-muted-foreground">
-                            Click to view certificate
-                        </p>
-                    </div>
+                    ) : (
+                        <div className="text-center">
+                            <div className="w-20 h-20 mx-auto mb-4 rounded-xl bg-primary/20 flex items-center justify-center">
+                                <Icon className="w-10 h-10 text-primary" />
+                            </div>
+                            <p className="text-sm font-medium text-muted-foreground">
+                                Click to view certificate
+                            </p>
+                        </div>
+                    )}
                 </div>
 
                 {/* Certificate Details */}
